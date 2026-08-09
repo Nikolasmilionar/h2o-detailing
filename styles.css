@@ -1,0 +1,416 @@
+/* Revive & Refine — Combined styles (self-contained) */
+
+/* ── tokens/fonts.css ── */
+/* Revive & Refine Detailing — Webfonts
+   Fraunces (serif display/headings) + Inter (body/UI).
+   Self-hosted woff2, variable-weight subset shipped with the system. */
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-900.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/inter-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/inter-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./assets/fonts/inter-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/inter-700.woff2") format("woff2");
+}
+
+
+/* ── tokens/colors.css ── */
+/* Revive & Refine Detailing — Color tokens
+   A warm, restrained palette: near-black neutrals, a soft warm-gray ("mongoose")
+   family, and a single gold accent (#BFA77A). Light-dominant brand with a dark
+   hero scheme. */
+
+:root {
+  /* ---- Neutral ramp (shade-0 darkest convention from source, mapped to
+     intuitive light→dark names here) ---- */
+  --color-white: #ffffff;
+  --color-neutral-lightest: #f2f2f2;
+  --color-neutral-lighter: #dad9d9;
+  --color-neutral-light: #b5b4b4;
+  --color-neutral: #848382;
+  --color-neutral-dark: #535250;
+  --color-neutral-darker: #22201e;
+  --color-neutral-darkest: #0a0806; /* primary near-black ink */
+
+  /* ---- Mongoose: warm taupe/gold family. Brand accent = --color-mongoose ---- */
+  --color-mongoose-lightest: #eef4ff;
+  --color-mongoose-lighter: #dce8ff;
+  --color-mongoose-light: #4d8aff;
+  --color-mongoose: #0057ff; /* gold accent */
+  --color-mongoose-dark: #0044cc; /* accent hover */
+  --color-mongoose-darker: #002966;
+  --color-mongoose-darkest: #001a40; /* dark warm scheme bg */
+
+  /* ---- Alpha tints (white-on-dark, ink-on-light) for borders & hover fills ---- */
+  --color-white-5: rgba(255, 255, 255, 0.05);
+  --color-white-10: rgba(255, 255, 255, 0.1);
+  --color-white-15: rgba(255, 255, 255, 0.15);
+  --color-white-20: rgba(255, 255, 255, 0.2);
+  --color-white-30: rgba(255, 255, 255, 0.3);
+  --color-white-50: rgba(255, 255, 255, 0.5);
+  --color-white-60: rgba(255, 255, 255, 0.6);
+
+  --color-ink-5: rgba(10, 8, 6, 0.05);
+  --color-ink-10: rgba(10, 8, 6, 0.1);
+  --color-ink-15: rgba(10, 8, 6, 0.15);
+  --color-ink-20: rgba(10, 8, 6, 0.2);
+  --color-ink-50: rgba(10, 8, 6, 0.5);
+  --color-ink-60: rgba(10, 8, 6, 0.6);
+
+  /* ---- Semantic aliases (default = light scheme) ---- */
+  --surface-page: var(--color-white);
+  --surface-card: var(--color-white);
+  --surface-inverse: var(--color-neutral-darkest);
+  --surface-muted: var(--color-neutral-lighter);
+
+  --text-strong: var(--color-neutral-darkest);
+  --text-body: var(--color-neutral-darkest);
+  --text-muted: var(--color-neutral-dark);
+  --text-on-inverse: var(--color-white);
+  --text-placeholder: var(--color-ink-60);
+
+  --accent: var(--color-mongoose);
+  --accent-hover: var(--color-mongoose-dark);
+  --accent-contrast: var(--color-white);
+
+  --border-subtle: var(--color-ink-15);
+  --border-strong: var(--color-neutral-darkest);
+  --border-on-inverse: var(--color-white-20);
+}
+
+/* ----------------------------------------------------------------------------
+   Color schemes. Apply a scheme class to a section/root; descendants inherit
+   text, accent and border colors automatically. Source: DESIGN.md schemes.
+---------------------------------------------------------------------------- */
+
+/* Scheme 1 — Dark ink (hero) */
+.scheme-1 {
+  --scheme-bg: var(--color-neutral-darkest);
+  --scheme-text: var(--color-white);
+  --scheme-muted: var(--color-white-60);
+  --scheme-accent: var(--color-mongoose);
+  --scheme-border: var(--color-white-20);
+  --scheme-btn-text: var(--color-neutral-darkest);
+  background-color: transparent;
+  color: var(--scheme-text);
+}
+
+/* Scheme 2 — Dark warm (mongoose darkest) */
+.scheme-2 {
+  --scheme-bg: var(--color-neutral-darkest);
+  --scheme-text: var(--color-white);
+  --scheme-muted: var(--color-white-60);
+  --scheme-accent: var(--color-white);
+  --scheme-border: var(--color-white-20);
+  --scheme-btn-text: var(--color-neutral-darkest);
+  background-color: var(--scheme-bg);
+  color: var(--scheme-text);
+}
+
+/* Scheme 3 — White (default page) */
+.scheme-3 {
+  --scheme-bg: var(--color-neutral-darkest);
+  --scheme-text: var(--color-white);
+  --scheme-muted: var(--color-white-60);
+  --scheme-accent: var(--color-neutral-darkest);
+  --scheme-border: var(--color-ink-15);
+  --scheme-btn-text: var(--color-neutral-darkest);
+  background-color: var(--scheme-bg);
+  color: var(--scheme-text);
+}
+
+/* Scheme 4 — Light gray */
+.scheme-4 {
+  --scheme-bg: var(--color-neutral-darkest);
+  --scheme-text: var(--color-white);
+  --scheme-muted: var(--color-white-60);
+  --scheme-accent: var(--color-neutral-darkest);
+  --scheme-border: var(--color-ink-15);
+  --scheme-btn-text: var(--color-neutral-darkest);
+  background-color: var(--scheme-bg);
+  color: var(--scheme-text);
+}
+
+
+/* ── tokens/typography.css ── */
+/* Revive & Refine Detailing — Typography tokens
+   Display/headings: Fraunces (serif, 700). Body/UI: Inter (400).
+   Two-tier scale: values below are desktop. Mobile sizes noted in comments;
+   the responsive block at the bottom scales headings down under 992px. */
+
+:root {
+  --font-display: "Oswald", Impact, system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 900;
+
+  /* ---- Type scale (desktop) ---- */
+  --text-h1: 5.25rem; /* 84px */
+  --text-h2: 3.75rem; /* 60px */
+  --text-h3: 3rem; /* 48px */
+  --text-h4: 2.5rem; /* 40px */
+  --text-h5: 2rem; /* 32px */
+  --text-h6: 1.625rem; /* 26px */
+
+  --text-large: 1.625rem; /* 26px */
+  --text-medium: 1.25rem; /* 20px */
+  --text-regular: 1.125rem; /* 18px */
+  --text-small: 1rem; /* 16px */
+  --text-tiny: 0.75rem; /* 12px */
+
+  /* ---- Line heights ---- */
+  --leading-tight: 1.1; /* h1 */
+  --leading-heading: 1.2; /* h2–h6 */
+  --leading-body: 1.6; /* paragraphs */
+
+  /* ---- Letter spacing ---- */
+  --tracking-heading: 0.01em; /* +1% on headings */
+  --tracking-normal: 0;
+}
+
+/* Mobile / small-screen heading sizes (< 992px) */
+@media (max-width: 991px) {
+  :root {
+    --text-h1: 3rem; /* 48px */
+    --text-h2: 2.75rem; /* 44px */
+    --text-h3: 2rem; /* 32px */
+    --text-h4: 1.5rem; /* 24px */
+    --text-h5: 1.25rem; /* 20px */
+    --text-h6: 1.125rem; /* 18px */
+    --text-large: 1.125rem; /* 18px */
+    --text-medium: 1rem; /* 16px */
+    --text-regular: 0.875rem; /* 14px */
+    --text-small: 0.75rem; /* 12px */
+    --text-tiny: 0.625rem; /* 10px */
+  }
+}
+
+
+/* ── tokens/spacing.css ── */
+/* Revive & Refine Detailing — Spacing, radii, shadows & layout tokens */
+
+:root {
+  /* ---- Spacing scale (4px base) ---- */
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.25rem; /* 20 */
+  --space-6: 1.5rem; /* 24 */
+  --space-8: 2rem; /* 32 */
+  --space-10: 2.5rem; /* 40 */
+  --space-12: 3rem; /* 48 */
+  --space-16: 4rem; /* 64 */
+  --space-18: 4.5rem; /* 72 */
+  --space-24: 6rem; /* 96 */
+  --space-28: 7rem; /* 112 */
+  --space-30: 7.5rem; /* 120 */
+
+  /* Vertical rhythm for full-bleed sections (mobile / tablet / desktop) */
+  --section-y-sm: var(--space-16);
+  --section-y-md: var(--space-24);
+  --section-y-lg: var(--space-28);
+  --page-inline: 5%;
+
+  /* ---- Radii ---- */
+  --radius-button: 0.25rem; /* 100px — full pill */
+  --radius-badge: 6.25rem; /* 100px — full pill */
+  --radius-input: 0.75rem; /* 12px */
+  --radius-card: 0.5rem; /* 8px */
+  --radius-image: 0.5rem; /* 8px */
+  --radius-checkbox: 0.25rem; /* 4px */
+
+  /* ---- Borders ---- */
+  --border-width: 1px;
+
+  /* ---- Shadows (used sparingly; brand leans on outlined cards) ---- */
+  --shadow-xs: 0 1px 2px rgba(10, 8, 6, 0.05);
+  --shadow-sm: 0 2px 8px rgba(10, 8, 6, 0.06);
+  --shadow-md: 0 8px 24px rgba(10, 8, 6, 0.1);
+  --shadow-lg: 0 20px 48px rgba(10, 8, 6, 0.16);
+
+  /* ---- Containers ---- */
+  --container-sm: 30rem;
+  --container-md: 35rem;
+  --container-lg: 48rem;
+  --container-xl: 64rem;
+  --container-xxl: 80rem; /* 1280px — primary page container */
+
+  /* ---- Breakpoints (reference) ---- */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 992px;
+
+  /* ---- Motion ---- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 200ms; /* @kind other */
+  --duration-base: 300ms; /* @kind other */
+}
+
+
+/* ── tokens/base.css ── */
+/* Revive & Refine Detailing — Base element defaults.
+   Applies the brand type system to raw HTML so specimen cards, components,
+   and consuming pages get sensible defaults without utility classes. */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-regular);
+  line-height: var(--leading-body);
+  color: var(--text-body);
+  background-color: var(--surface-page);
+  background: linear-gradient(180deg, #001a40 0%, #001026 45%, #0a0806 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: inherit;
+  margin: 0;
+}
+
+h1 { font-size: var(--text-h1); line-height: var(--leading-tight); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); }
+h4 { font-size: var(--text-h4); }
+h5 { font-size: var(--text-h5); }
+h6 { font-size: var(--text-h6); }
+
+p { margin: 0; }
+
+a { color: inherit; }
+
+button, [role="button"] {
+  cursor: pointer;
+}
+button:disabled, [role="button"][aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+::selection {
+  background: var(--color-mongoose-light);
+  color: var(--color-neutral-darkest);
+}
+css
+/* ===== Black Diamond — tmavý motiv ===== */
+:root {
+  --surface-page: #0A0E1A;
+  --surface-card: #111827;
+  --surface-muted: #111827;
+  --surface-inverse: #0A0E1A;
+  --text-strong: #FFFFFF;
+  --text-body: #FFFFFF;
+  --text-muted: #9CA3AF;
+  --text-on-inverse: #FFFFFF;
+  --border-subtle: #1F2A44;
+  --border-strong: #1F2A44;
+  --color-neutral-lightest: #1F2A44;
+  --color-mongoose-lighter: #14213D;
+}
+
+body {
+  background: linear-gradient(180deg, #0B1730 0%, #0A0E1A 55%, #05070D 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #FFFFFF;
+}
+
+.scheme-1, .scheme-3 {
+  --scheme-bg: transparent;
+  --scheme-text: #FFFFFF;
+  --scheme-muted: #9CA3AF;
+  --scheme-border: #1F2A44;
+  --scheme-btn-text: #FFFFFF;
+  background-color: transparent;
+  color: #FFFFFF;
+}
+
+header.scheme-3 {
+  background: rgba(10, 14, 26, 0.92) !important;
+  border-color: #1F2A44 !important;
+}
+
+footer.scheme-3 {
+  background-color: #0A0E1A;
+}
+/* ===== Navigace ===== */
+header.scheme-3 {
+  background: #0A0E1A !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+header.scheme-3 a,
+header.scheme-3 nav a,
+header.scheme-3 span {
+  color: #FFFFFF !important;
+}
+header.scheme-3 .rr-hamburger span {
+  background: #FFFFFF !important;
+}

@@ -1,0 +1,80 @@
+<!-- @dsCard group="Website" viewport="1280x760" name="Marketing site & booking" subtitle="Interactive home page + multi-field booking flow built from the components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+<title>Black Diamond Detailing — Premium Interior Detailing in Kent</title>
+<link rel="stylesheet" href="./styles.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="./_ds_bundle.js"></script>
+<style>
+  html { scroll-behavior: smooth; overflow-x: hidden; overscroll-behavior-x: none; }
+  body { margin: 0; overflow-x: hidden; overscroll-behavior-x: none; touch-action: pan-y; }
+  .material-symbols-rounded { font-family: "Material Symbols Rounded"; font-weight: normal; font-style: normal; display: inline-block; white-space: nowrap; direction: ltr; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="Icons.jsx"></script>
+<script type="text/babel" src="Shared.jsx"></script>
+<script type="text/babel" src="Navbar.jsx"></script>
+<script type="text/babel" src="Sections.jsx"></script>
+<script type="text/babel" src="Footer.jsx"></script>
+<script type="text/babel">
+  // Single-page site: only Home is rendered. Every nav link / Book button
+  // smooth-scrolls to the matching section on this page.
+  function App() {
+    // Map nav targets to section anchor IDs on the home page.
+    const SECTION_FOR = {
+      Services: "services",
+      Gallery: "gallery",
+      Contact: "contact",
+      Booking: "contact",
+      About: "about",
+      "About us": "about",
+      FAQ: "contact",
+    };
+
+    const go = (target) => {
+      if (target === "Home" || target == null) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      const id = SECTION_FOR[target];
+      const el = id && document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    };
+    const book = () => go("Contact");
+
+    const Navbar = window.RRNavbar;
+    const Footer = window.RRFooter;
+    return (
+      <div>
+        <Navbar active="Home" onNav={go} onBook={book} />
+        <main>
+          <div style={{ height: "4.5rem" }}></div>
+          <window.RRHero onBook={book} onNav={go} />
+          <window.RRFeatureIntro />
+          <div id="services" style={{ scrollMarginTop: "5rem" }}><window.RRServicesList /></div>
+          <div id="about" style={{ scrollMarginTop: "5rem" }}><window.RRBenefits onNav={go} /></div>
+          <div id="gallery" style={{ scrollMarginTop: "5rem" }}><window.RRGallery onNav={go} /></div>
+          <window.RRTestimonials onBook={book} />
+          <div id="contact" style={{ scrollMarginTop: "5rem" }}><window.RRNewsletter /></div>
+        </main>
+        <Footer onNav={go} />
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
