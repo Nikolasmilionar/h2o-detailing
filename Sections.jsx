@@ -1,28 +1,32 @@
-/* Black Diamond Detailing — Home page sections. Responsive for mobile. */
+/* H2O Mobile Detailing — Home page sections. Responsive for mobile. */
 
 const SECTION = { padding: "var(--section-y-md) 5%" };
 const CONTAINER = { maxWidth: "var(--container-xxl)", margin: "0 auto" };
+const INSTAGRAM_URL = "https://www.instagram.com/h20mobiledetailingnw/";
+const PHONE_URL = "tel:+447591975194";
 
 function Hero({ onBook, onNav }) {
   const { Button } = window.ReviveRefineDesignSystem_38ca5a;
   const isMobile = window.useIsMobile();
   return (
-    <section className="scheme-1" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", padding: isMobile ? "8rem 5% 0" : "12rem 5% 0", position: "relative" }}>
-      <div style={{ textAlign: "center", maxWidth: "52rem", marginBottom: "var(--space-10)" }}>
-        <h1 style={{ fontSize: isMobile ? "clamp(2.8rem, 10vw, 3.5rem)" : "clamp(3.5rem, 6.5vw, 6rem)", lineHeight: 1.05, marginBottom: "var(--space-5)", fontWeight: 800 }}>
-          <span style={{ color: "var(--scheme-text)", display: "block" }}>Detailing made</span>
-          <span style={{ color: "var(--scheme-text)", display: "block" }}>different.</span>
+    <section className="scheme-1" style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: isMobile ? "7rem 5% 4rem" : "7rem 5% 4rem", overflow: "hidden" }}>
+      <img src="./assets/images/hero.jpg" alt="H2O Mobile Detailing" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center", zIndex: 0 }} />
+      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(180deg, rgba(5,11,24,0.84) 0%, rgba(5,11,24,0.66) 45%, rgba(5,11,24,0.95) 100%)" }} />
+      <div style={{ position: "relative", zIndex: 2, textAlign: "center", maxWidth: "52rem" }}>
+        <p style={{ fontSize: "var(--text-small)", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "var(--space-5)" }}>
+          Mobile detailing · Rhyl &amp; North Wales
+        </p>
+        <h1 style={{ fontSize: isMobile ? "clamp(2.6rem, 9vw, 3.4rem)" : "clamp(3rem, 5vw, 4.5rem)", lineHeight: 1.05, marginBottom: "var(--space-5)", fontWeight: 800, color: "#FFFFFF" }}>
+          <span style={{ display: "block" }}>Bring back that</span>
+          <span style={{ display: "block" }}>showroom shine.</span>
         </h1>
-        <p style={{ fontSize: "var(--text-medium)", color: "var(--scheme-muted)", marginBottom: "var(--space-8)" }}>
-          Premium interior detailing across Kent. We come to you.
+        <p style={{ fontSize: "var(--text-medium)", color: "rgba(255,255,255,0.82)", marginBottom: "var(--space-8)", maxWidth: "34rem", marginLeft: "auto", marginRight: "auto" }}>
+          Interior &amp; exterior detailing, brought to your driveway. Reliable, affordable, professional.
         </p>
         <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", flexWrap: "wrap", gap: "var(--space-3)" }}>
-          <Button variant="primary" onClick={onBook}>Book your detail</Button>
-          <Button variant="secondary" onClick={() => onNav && onNav("Services")}>Our services</Button>
+          <Button variant="primary" onClick={() => window.open(INSTAGRAM_URL, "_blank")}>Message to book</Button>
+          <Button variant="secondary" onClick={() => onNav && onNav("Services")}>See prices</Button>
         </div>
-      </div>
-      <div style={{ width: "100%", maxWidth: "56rem", borderRadius: "var(--radius-image) var(--radius-image) 0 0", overflow: "hidden", boxShadow: "0 -4px 40px rgba(0,0,0,0.10)", flexShrink: 0 }}>
-        <img src="./assets/images/hero.jpg" alt="Black Diamond Detailing" style={{ width: "100%", aspectRatio: "16 / 9", objectFit: "cover", objectPosition: "center 30%", display: "block" }} />
       </div>
     </section>
   );
@@ -32,10 +36,10 @@ function FeatureIntro() {
   const Icon = window.RRIcon;
   const isMobile = window.useIsMobile();
   const steps = [
-    { icon: "calendar_month", num: "01", title: "Book", body: "Message us and pick a time that suits you." },
-    { icon: "directions_car", num: "02", title: "We come to you", body: "We arrive fully equipped — nothing to prepare." },
-    { icon: "auto_awesome", num: "03", title: "We work", body: "Every inch of your cabin cleaned with precision." },
-    { icon: "star", num: "04", title: "Back to life", body: "You get in a car that looks and smells brand new." },
+    { icon: "chat", num: "01", title: "Message us", body: "Tell us the car and what it needs. We'll quote you fairly." },
+    { icon: "directions_car", num: "02", title: "We come to you", body: "Anywhere in Rhyl and the surrounding areas." },
+    { icon: "auto_awesome", num: "03", title: "We take our time", body: "Most jobs take three hours or more. Nothing gets rushed." },
+    { icon: "star", num: "04", title: "Showroom shine", body: "You get back a car that looks like it just rolled out." },
   ];
   return (
     <section className="scheme-3" style={{ ...SECTION, borderTop: "1px solid var(--scheme-border)", borderBottom: "1px solid var(--scheme-border)" }}>
@@ -67,10 +71,11 @@ function FeatureIntro() {
 }
 
 const SERVICES = [
-  { icon: "cleaning_services", title: "Interior Deep Clean", body: "Every inch vacuumed, cleaned and detailed.", price: "from £40" },
-  { icon: "airline_seat_recline_extra", title: "Seats & Upholstery", body: "Fabric and leather deep cleaned and conditioned.", price: "from £60" },
-  { icon: "sanitizer", title: "Odour & Sanitisation", body: "Cabin sanitised, fresher and hygienic.", price: "from £35" },
-  { icon: "auto_awesome", title: "Full Interior Detail", body: "The complete package, dashboard to boot.", price: "from £90" },
+  { icon: "wash", title: "Basic Wash", body: "Snow foam pre-wash, hand wash, wheels and a microfibre dry.", price: "£25" },
+  { icon: "cleaning_services", title: "Quick Clean", body: "Hoover throughout, surfaces wiped down, windows cleaned.", price: "£30" },
+  { icon: "airline_seat_recline_extra", title: "Full Interior Detail", body: "Deep hoover, plastics cleaned and dressed, vents and glass done.", price: "£60" },
+  { icon: "auto_fix", title: "Full Valet", body: "Standard exterior detail plus a full interior detail.", price: "£95" },
+  { icon: "workspace_premium", title: "Ultimate Detail", body: "Premium exterior, deep interior clean and paint protection.", price: "£140+" },
 ];
 
 function ServicesList() {
@@ -83,7 +88,8 @@ function ServicesList() {
       <div style={CONTAINER}>
         <div style={{ maxWidth: "var(--container-md)", margin: "0 auto", textAlign: "center", marginBottom: "var(--space-12)" }}>
           <p style={{ marginBottom: "var(--space-3)", fontWeight: 600, color: "var(--accent)" }}>Services</p>
-          <h2>Interior detailing, done properly</h2>
+          <h2>Packages &amp; prices</h2>
+          <p style={{ color: "var(--scheme-muted)", marginTop: "var(--space-3)" }}>Prices vary with the size and condition of your vehicle. Message us for a fair quote. Add-ons available from £20.</p>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: "var(--space-8)", alignItems: "stretch" }}>
           {!isMobile && (
@@ -94,7 +100,7 @@ function ServicesList() {
               <img src="./assets/images/services-feature.jpg" alt="What we offer" style={{ width: "100%", borderRadius: "var(--radius-image)", objectFit: "contain", marginBottom: "var(--space-4)" }} />
             )}
             {SERVICES.map((s, i) => (
-              <Card key={s.title} onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)} style={{ borderColor: "var(--color-neutral-lightest)", boxShadow: hovered === i ? "var(--shadow-md)" : "var(--shadow-sm)", transform: hovered === i ? "translateY(-4px)" : "translateY(0)", transition: "transform 0.18s ease, box-shadow 0.18s ease", cursor: "pointer" }}>
+              <Card key={s.title} onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)} onClick={() => window.open(INSTAGRAM_URL, "_blank")} style={{ borderColor: "var(--color-neutral-lightest)", boxShadow: hovered === i ? "var(--shadow-md)" : "var(--shadow-sm)", transform: hovered === i ? "translateY(-4px)" : "translateY(0)", transition: "transform 0.18s ease, box-shadow 0.18s ease", cursor: "pointer" }}>
                 <CardBody style={{ padding: "var(--space-5) var(--space-6)" }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-3)" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
@@ -118,9 +124,9 @@ function ServicesList() {
 }
 
 const BENEFITS = [
-  { icon: "verified", title: "Deep cleaning", body: "Every inch, spotless. We don't cut corners and we don't rush." },
-  { icon: "search_check", title: "Premium finish", body: "A standard you can see the moment you open the door." },
-  { icon: "directions_car", title: "Mobile service", body: "We come to you, anywhere in Kent. Your driveway, your schedule." },
+  { icon: "verified", title: "Reliable, affordable, professional", body: "Straight answers on price, a time we actually turn up, and work we stand behind." },
+  { icon: "schedule", title: "We take our time", body: "Most jobs take three hours or more. Proper detailing can't be done in fifteen minutes." },
+  { icon: "directions_car", title: "We come to you", body: "Fully mobile across Rhyl and the surrounding areas. Your driveway, your schedule." },
 ];
 
 function Benefits({ onNav }) {
@@ -134,7 +140,7 @@ function Benefits({ onNav }) {
           <div>
             <h2 style={{ marginBottom: isMobile ? "var(--space-6)" : "var(--space-12)" }}>Why choose us</h2>
             {isMobile && (
-              <img src="./assets/images/benefits.jpg" alt="Interior detailing in progress" style={{ width: "100%", borderRadius: "var(--radius-image)", objectFit: "cover", aspectRatio: "16 / 7", marginBottom: "var(--space-8)" }} />
+              <img src="./assets/images/benefits.jpg" alt="Detailing in progress" style={{ width: "100%", borderRadius: "var(--radius-image)", objectFit: "cover", aspectRatio: "16 / 7", marginBottom: "var(--space-8)" }} />
             )}
             <div style={{ display: "grid", gap: "var(--space-8)" }}>
               {BENEFITS.map((b) => (
@@ -148,13 +154,13 @@ function Benefits({ onNav }) {
               ))}
             </div>
             <div style={{ marginTop: "var(--space-8)" }}>
-              <Button variant="primary" onClick={() => onNav && onNav("About")}>
-                More about us <Icon name="arrow_forward" size={18} />
+              <Button variant="primary" onClick={() => window.open(INSTAGRAM_URL, "_blank")}>
+                Message to book <Icon name="arrow_forward" size={18} />
               </Button>
             </div>
           </div>
           {!isMobile && (
-            <img src="./assets/images/benefits.jpg" alt="Interior detailing in progress" style={{ width: "100%", borderRadius: "var(--radius-image)", objectFit: "cover", aspectRatio: "4 / 5" }} />
+            <img src="./assets/images/benefits.jpg" alt="Detailing in progress" style={{ width: "100%", borderRadius: "var(--radius-image)", objectFit: "cover", aspectRatio: "4 / 5" }} />
           )}
         </div>
       </div>
@@ -167,10 +173,10 @@ function Gallery({ onNav }) {
   const [hovered, setHovered] = React.useState(null);
   const [btnHovered, setBtnHovered] = React.useState(false);
   const images = [
-    { src: "gallery-full-valet.jpg", label: "Full Interior Detail", sub: "Dashboard to boot, every surface", pos: "center center" },
-    { src: "gallery-0.jpg", label: "Seats & Upholstery", sub: "Fabric and leather restored", pos: "center 30%" },
-    { src: "gallery-ceramic.jpg", label: "Carpets & Mats", sub: "Deep extraction clean", pos: "center center" },
-    { src: "gallery-interior.jpg", label: "Dashboard & Trim", sub: "Cleaned, conditioned, protected", pos: "center center" },
+    { src: "gallery-full-valet.jpg", label: "Full Valet", sub: "Inside and out in one visit", pos: "center center" },
+    { src: "gallery-0.jpg", label: "Exterior Detail", sub: "Foam wash, wax and protection", pos: "center center" },
+    { src: "gallery-ceramic.jpg", label: "Wheel & Tyre Shine", sub: "Deep cleaned and dressed", pos: "center center" },
+    { src: "gallery-interior.jpg", label: "Interior Restore", sub: "Shampoo, stains and odours", pos: "center center" },
   ];
   const visibleImages = isMobile ? images.slice(0, 2) : images;
   return (
@@ -195,10 +201,10 @@ function Gallery({ onNav }) {
           ))}
         </div>
         <div style={{ textAlign: "center", marginTop: "var(--space-10)" }}>
-          <button onClick={() => onNav && onNav("Gallery")} onMouseEnter={() => setBtnHovered(true)} onMouseLeave={() => setBtnHovered(false)}
-            style={{ background: "none", border: "none", cursor: "pointer", color: "var(--accent)", fontWeight: 600, fontSize: "var(--text-small)", display: "inline-flex", alignItems: "center", gap: "var(--space-2)", padding: 0, opacity: btnHovered ? 0.7 : 1, transform: btnHovered ? "translateX(3px)" : "translateX(0)", transition: "opacity 0.15s ease, transform 0.15s ease" }}>
-            View full gallery <span style={{ fontSize: "1em" }}>›</span>
-          </button>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" onMouseEnter={() => setBtnHovered(true)} onMouseLeave={() => setBtnHovered(false)}
+            style={{ background: "none", border: "none", cursor: "pointer", color: "var(--accent)", fontWeight: 600, fontSize: "var(--text-small)", display: "inline-flex", alignItems: "center", gap: "var(--space-2)", padding: 0, textDecoration: "none", opacity: btnHovered ? 0.7 : 1, transform: btnHovered ? "translateX(3px)" : "translateX(0)", transition: "opacity 0.15s ease, transform 0.15s ease" }}>
+            See more on Instagram <span style={{ fontSize: "1em" }}>›</span>
+          </a>
         </div>
       </div>
     </section>
@@ -206,9 +212,9 @@ function Gallery({ onNav }) {
 }
 
 const QUOTES = [
-  { stars: 5, quote: "Add this guy for interior detailing, highly recommend. My car feels brand new — 10/10.", name: "Instagram review", meta: "Interior detail · Kent" },
-  { stars: 5, quote: "[PLACEHOLDER — replace with a real customer review]", name: "[Customer name]", meta: "[Car] · Kent" },
-  { stars: 5, quote: "[PLACEHOLDER — replace with a real customer review]", name: "[Customer name]", meta: "[Car] · Kent" },
+  { stars: 5, quote: "Best about for what they do 👌", name: "lee84ross", meta: "Instagram · Rhyl" },
+  { stars: 5, quote: "[PLACEHOLDER — replace with a real customer review]", name: "[Customer name]", meta: "[Car] · Rhyl" },
+  { stars: 5, quote: "[PLACEHOLDER — replace with a real customer review]", name: "[Customer name]", meta: "[Car] · Rhyl" },
 ];
 
 function Testimonials({ onBook }) {
@@ -226,7 +232,7 @@ function Testimonials({ onBook }) {
       <button onClick={onClick}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 40, height: 40, borderRadius: "50%", border: "1px solid var(--scheme-border)", background: hovered ? "rgba(0,0,0,0.12)" : "transparent", cursor: "pointer", color: "var(--scheme-text)", transition: "background 0.15s" }}>
+        style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 40, height: 40, borderRadius: "50%", border: "1px solid var(--scheme-border)", background: hovered ? "rgba(255,255,255,0.10)" : "transparent", cursor: "pointer", color: "var(--scheme-text)", transition: "background 0.15s" }}>
         <span className="material-symbols-rounded" style={{ fontSize: 20 }}>{icon}</span>
       </button>
     );
@@ -236,7 +242,7 @@ function Testimonials({ onBook }) {
       <div style={CONTAINER}>
         <div style={{ textAlign: "center", marginBottom: "var(--space-10)" }}>
           <p style={{ marginBottom: "var(--space-2)", fontWeight: 600, color: "var(--accent)" }}>Reviews</p>
-          <h2 style={{ margin: 0 }}>What clients say</h2>
+          <h2 style={{ margin: 0 }}>What customers say</h2>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: "var(--space-6)" }}>
           {visible.map((q, i) => (
@@ -256,7 +262,7 @@ function Testimonials({ onBook }) {
           <ArrowBtn icon="arrow_forward" onClick={() => setStart((s) => (s + PER_PAGE) % total)} />
         </div>
         <div style={{ display: "flex", justifyContent: "center", marginTop: "var(--space-4)" }}>
-          <a href="https://www.instagram.com/blackdiamonddetialing/" target="_blank" rel="noopener noreferrer"
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer"
             onMouseEnter={() => setLinkHovered(true)} onMouseLeave={() => setLinkHovered(false)}
             style={{ color: "var(--accent)", fontWeight: 600, fontSize: "var(--text-small)", textDecoration: "none", opacity: linkHovered ? 0.7 : 1, transition: "opacity 0.15s ease" }}>
             See more on Instagram ›
@@ -268,24 +274,20 @@ function Testimonials({ onBook }) {
 }
 
 function Newsletter() {
-  const { Button, Input } = window.ReviveRefineDesignSystem_38ca5a;
+  const { Button } = window.ReviveRefineDesignSystem_38ca5a;
   const isMobile = window.useIsMobile();
-  const [sent, setSent] = React.useState(false);
   return (
     <section className="scheme-1" style={SECTION}>
       <div style={{ ...CONTAINER, maxWidth: "var(--container-md)", textAlign: "center" }}>
-        <h2 style={{ marginBottom: "var(--space-5)" }}>Launch offer — 50% off</h2>
-        <p style={{ fontSize: "var(--text-medium)", color: "var(--scheme-muted)" }}>Our first 10 customers get half price on their first interior detail.</p>
-        <div style={{ maxWidth: "26rem", margin: "var(--space-8) auto 0" }}>
-          <form onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-            style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr max-content", gap: "var(--space-3)", marginBottom: "var(--space-4)" }}>
-            <Input type="email" placeholder="Enter your email" required disabled={sent} />
-            <Button type="submit" variant="primary">{sent ? "Claimed ✓" : "Claim my spot"}</Button>
-          </form>
-          <p style={{ fontSize: "var(--text-tiny)", color: "var(--scheme-muted)" }}>
-            We'll only contact you about your booking.
-          </p>
+        <h2 style={{ marginBottom: "var(--space-5)" }}>Availability all week &amp; all weekend</h2>
+        <p style={{ fontSize: "var(--text-medium)", color: "var(--scheme-muted)" }}>Message us with your car and what it needs, and we'll come back with a fair price.</p>
+        <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "center", gap: "var(--space-3)", margin: "var(--space-8) auto 0" }}>
+          <Button variant="primary" onClick={() => window.open(INSTAGRAM_URL, "_blank")}>Message on Instagram</Button>
+          <Button variant="secondary" onClick={() => window.open(PHONE_URL)}>Call 07591 975194</Button>
         </div>
+        <p style={{ fontSize: "var(--text-tiny)", color: "var(--scheme-muted)", marginTop: "var(--space-4)" }}>
+          Mobile service across Rhyl &amp; surrounding areas · Extra charge may apply depending on distance
+        </p>
       </div>
     </section>
   );
