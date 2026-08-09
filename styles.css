@@ -447,3 +447,6 @@ body {
   color: #FFFFFF;
 }
 footer.scheme-3 { background-color: #050B18; }
+header.scheme-3 {
+  background: #050B18 !important;
+}
