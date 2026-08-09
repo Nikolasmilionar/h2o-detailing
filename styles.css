@@ -414,3 +414,36 @@ header.scheme-3 span {
 header.scheme-3 .rr-hamburger span {
   background: #FFFFFF !important;
 }
+/* ===== H2O — modročerný motiv ===== */
+:root {
+  --color-mongoose-lighter: #0F1B33;
+  --color-mongoose: #1E90FF;
+  --color-mongoose-dark: #0A66FF;
+  --accent: #1E90FF;
+  --accent-hover: #0A66FF;
+  --accent-contrast: #FFFFFF;
+  --surface-page: #050B18;
+  --surface-card: #0A0F1E;
+  --surface-muted: #0A0F1E;
+  --text-strong: #FFFFFF;
+  --text-body: #FFFFFF;
+  --text-muted: #93A1B8;
+  --border-subtle: #16233D;
+  --border-strong: #16233D;
+  --color-neutral-lightest: #16233D;
+}
+body {
+  background: linear-gradient(180deg, #0A1428 0%, #050B18 55%, #030710 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #FFFFFF;
+}
+.scheme-1, .scheme-3 {
+  --scheme-bg: transparent;
+  --scheme-text: #FFFFFF;
+  --scheme-muted: #93A1B8;
+  --scheme-border: #16233D;
+  background-color: transparent;
+  color: #FFFFFF;
+}
+footer.scheme-3 { background-color: #050B18; }
