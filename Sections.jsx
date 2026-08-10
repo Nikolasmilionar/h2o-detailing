@@ -175,8 +175,8 @@ function Gallery({ onNav }) {
   const images = [
     { src: "gallery-full-valet.jpg", label: "Full Valet", sub: "Inside and out in one visit", pos: "center center" },
     { src: "gallery-0.jpg", label: "Exterior Detail", sub: "Foam wash, wax and protection", pos: "center center" },
-    { src: "gallery-ceramic.jpg", label: "Wheel & Tyre Shine", sub: "Deep cleaned and dressed", pos: "center center" },
-    { src: "gallery-interior.jpg", label: "Interior Restore", sub: "Shampoo, stains and odours", pos: "center center" },
+    { src: "gallery-ceramic.jpg", label: "Vans & Commercials", sub: "Work vehicles cleaned inside and out", pos: "center center" },
+    { src: "gallery-interior.jpg", label: "Interior Detail", sub: "Seats, plastics and carpets", pos: "center center" },
   ];
   const visibleImages = isMobile ? images.slice(0, 2) : images;
   return (
